@@ -1,6 +1,6 @@
 {
   "name": "sequelize-cli",
-  "version": "6.3.0",
+  "version": "6.3.1",
   "description": "The Sequelize CLI",
   "types": "./types.d.ts",
   "bin": {
@@ -34,6 +34,7 @@
     "expect.js": "0.3.1",
     "gulp": "4.0.2",
     "husky": "8.0.3",
+    "is-ci": "^3.0.1",
     "lint-staged": "15.2.2",
     "mocha": "9.2.2",
     "mysql2": "3.2.0",
@@ -58,7 +59,8 @@
     "build-clean": "rm -rf ./lib/",
     "lint": "eslint test src",
     "pretty": "prettier src test --write",
-    "prepare": "husky install && npm run build",
+    "prepare": "is-ci || husky install",
+    "prepublishOnly": "npm run build",
     "test-raw": "mocha 'test/**/*.test.js'",
     "test": "npm run lint && npm run build && npm run test-raw"
   },
